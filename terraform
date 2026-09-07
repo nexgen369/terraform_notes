@@ -1,0 +1,151 @@
+Terraform:
+---------
+
+Terraform basics-->installation-->AWS-->Authentication-->Provider-->EC2-->Variables-->outputs-->
+VPC/subnets/SG-->EC2 web server-->state-->update-->destroy
+
+Note:
+HashiCorp's group, current AWS beginner workflow follows the same basic lifecyle:
+Install Terraform, authenticate to AWS, create infrastruture, manage it, and destroy it.
+
+1.What is Terraform?
+Terraform is an Infrastruture as Code (IaC) tool created by HashiCorp
+Instead of manually creating infrastructure from the AWS Console:
+
+Manual Flow:
+-----------
+AWS Console
+|
+Create VPC/EC2/S3
+|
+Create Subnets/EC2 Server/S3 bucket
+|
+Create SG
+|
+Launch EC2/S3 bucket etc
+
+we describe the desired infrastruture in code:
+----------------------------------------------
+resource "aws_instance" "Web" {
+  ami   = "AMI_ID"
+  instance_type = "t3.micro"
+}
+
+Then Terraform create the infrastruture through AWS APIs (Application programming interface)
+
+Terraform configuration
+|
+Terraform CLI
+|
+AWS Provider
+|
+AWS APIs
+|
+AWS Resources
+
+Note: Terraform can manage AWS, Azure, GCP, Kubernetes, GitHub and many other platforms through providers.
+
+2.What is infrastructure as Code?
+Infrastructure as Code Means:
+  Infrastructure is defined and managed using "configuration files" instead of manually creating everything.
+
+For example, without Terraform:
+-------------------------------
+Login AWS
+->VPC
+->Create VPC
+->Create Subnet
+->Create Security Group
+->EC2
+->Launch Instance
+
+With Terraform:
+---------------
+command : "terraform apply"
+
+Terraform can provision all those resources based on configuration
+Advantages:
+-----------
+.Automation
+.Version Control
+.Repeatability
+.Consistency
+.Faster deployment
+.Reusable infrastructure
+.Reduced manual configuration
+.Easier Dev/Test/Prod management
+.Infrastucture review through Git
+.Diaster recovery/recreation
+
+3.Terraform Terminology:
+-------------------------
+Provider
+A Plugin Terraform uses to communicate with an API/Platform
+
+Example:
+provider "aws" {
+  region = ap-south-1 / us-east-1
+}
+
+Resource
+Something Terraform creates/manages.
+Exampels:
+EC2
+VPC
+Subnet
+Security Group
+S3
+RDS
+IAM
+EKS
+
+Example:
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
+Data Source
+Reads infromation that already exists
+
+For Example:
+data "aws_ami" amazon_linux" {
+}
+
+Terraform doesn't create that AMI; it queries AWS for it.
+
+Variable
+Input Value:
+variable "instance_type" {
+  defualt = "t3.micro"
+}
+
+Output
+Displays useful information after deployment:
+output "instance_ip {
+  value = aws_instance.web.public_ip
+}
+
+state
+Terraform keeps track of managed infrastructure using statefile.
+Defualt local state: terraform.tfstate
+
+Hand-On-AWS Configuration:
+--------------------------
+Login To aws
+Creat Access Key and Secrte Key
+command : "aws configure"
+later provide 
+access: 
+secrete key: 
+region: us-east-1
+Format: json
+
+
+
+
+
+
+
+
+
+
