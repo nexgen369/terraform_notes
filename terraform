@@ -140,6 +140,142 @@ secrete key:
 region: us-east-1
 Format: json
 
+Terraform Files:
+----------------
+Terraform configuration normally uses:
+.tf
+Example Project:
+----------------
+Terraform-aws-demo/
+|
+|---main.tf
+|---providers.tf
+|---variables.tf
+|---outputs.tf
+|---terraform.tfvars
+
+Explanation:
+------------
+Provider.tf
+|
+Which provider/version?
+|
+main.tf
+|
+what infrastructure?
+|
+variables.tf
+|
+what input variables?
+|
+terraform.tfvars
+|
+what values?
+|
+outputs.tf
+|
+what information should terraform return?
+
+Note:Terraform does not require these exact filenames;.tf in the working directory are evaluated together.
+The separation is mainly for organization
+
+6.Terraform Workflow:
+---------------------
+This is the most important sequence to memorize:
+
+write
+|
+terraform fmt
+|
+terraform init
+|
+terraform validate
+|
+terraform plan
+|
+terraform apply
+|
+Infrastrcuture created
+|
+terraform destroy
+
+7.Install Terraform
+--------------------
+visit google browser download and install terraform for windows amd64
+from downloads extract the file, extracted file copy and paste in C drive
+
+go to edit environment varibales copy the terraform C drive path and paste it in new path
+Clikc on OK
+
+Open Git bash and check the version : terraform --version
+
+8. AWS CLI
+9.AWS Authentication
+aws configure
+Access Key
+Secret Key 
+Region
+
+Once Authentication done verify credentails using below command
+"aws sts get-caller-identity"
+
+
+Very very important:
+--------------------
+do not hard code aws access and secrete key inside .tf files
+
+Bad configuration:
+-----------------
+provider "aws" {
+  access_key = "XXXXX"
+  secret_key = "XXXXX"
+}
+
+HANDS-ON--First Terraform Project:
+----------------------------------
+create directory:
+mkdir terraform-aws-demo
+cd terraform-aws-demo
+
+create file:
+provider.tf
+main.tf
+
+provider.tf:
+------------
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+
+Explanation of providers.tf:
+----------------------------
+terraform
+|
+Terraform configuration
+|
+required providers
+|
+Plugins required
+Aws
+|
+Aws provider
+hashicorp/aws
+|
+provider source
+region
+|
+Aws region
+
+
+
+
 
 
 
