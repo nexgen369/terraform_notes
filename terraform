@@ -273,6 +273,34 @@ region
 |
 Aws region
 
+12.terraform init
+Run: terraform init
+Purpose: Initializes the terraform working directory and downloads required provider 
+plugins/modules
+
+After terraform init,
+.terraform/
+    -->download working directory dependencies/provider artifacts
+.terraform.lock.hcl
+    -->dependency lock information
+13.terraform fmt
+Run: terraform fmt
+Purpose: Formats terraform configuration into canonical style
+
+Example bad format:
+resource "aws_vpc" "main" {cidr_block="10.0.0.0/16"}
+terraform fmt formats it appropriately
+
+14.terraform validate
+Run: terraform validate
+purpose: Checks whether the terraform configuration is internally valid
+
+Output: Success! The configuration is valid
+
+HANDS-ON 2--Create an S3 Bucket:
+--------------------------------
+
+
 
 
 
