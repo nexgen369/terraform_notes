@@ -300,6 +300,31 @@ Output: Success! The configuration is valid
 HANDS-ON 2--Create an S3 Bucket:
 --------------------------------
 
+main.tf explanation:
+--------------------
+resource "aws_s3_bucket" "website" {
+  bucket = var.bucket_name
+
+tags = {
+  Name = "Terraform static website shiva"
+  Environment = "Training"
+}
+-----------------------------------
+aws_s3_bucket
+|
+AWS resource type
+|
+Website
+|
+terraform local name
+bucket
+|
+Actual s3 bucket type
+
+
+
+
+
 
 
 
