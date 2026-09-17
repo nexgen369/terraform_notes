@@ -370,7 +370,64 @@ instead of:
 region = "us-east-1"
 we can use variables
 
-create : varibales.tf
+create : varibales.tf  (refer the repo)
+
+20.terraform Variable Types:
+string
+number
+bool
+list
+set
+map
+object
+
+String:
+variable "environment" {
+  type = string
+  defualt = "dev"
+}
+
+Number:
+variable "instance_count" {
+  type = number
+  defualt = 1
+}
+
+Boolean:
+variable "monitoring" {
+  type = bool
+  defualt = true
+}
+
+List:
+variable "availability_zones" {
+  type = list(string)
+  defualt = ["us-east-1a", "us-east-1b"]
+}
+
+Map:
+variable "tags" {
+  type = map(string)
+
+  default = {
+    Environment = "dev"
+    Project = "TerraformTraining"
+  }
+}
+
+21.terraform.tfvars
+instead of putting defualts everywhere:
+
+variables.tf:
+varible "aws_region" {
+  type = string
+}
+variable "environment" {
+  type = string
+}
+
+create: terraform.tfvars
+
 
 
 
