@@ -428,6 +428,17 @@ variable "environment" {
 
 create: terraform.tfvars
 
+aws_region = "us-east-1"
+environment = "dev"
+
+Note: Terraform automatically loads terraform.tfvars
+
+Important: Do not put passwors, access keys or other secrets in a tfvars file that will be committed to
+Git.
+
+HANDS-ON 4 - Create EC2
+
+
 
 
 
