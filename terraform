@@ -321,6 +321,60 @@ bucket
 |
 Actual s3 bucket type
 
+15.Understanding Resource Syntax:
+General format:
+resource "RESOURCE_TYPE" "LOCAL_NAME" {
+}
+
+Example:
+resource "aws_s3_bucket" "demo" {
+}
+
+Here:
+aws_s3_bucket
+|
+AWS resource type
+demo
+|
+Terraform local resource name
+
+Reference it elsewhere using: aws_s3_bucket.demo
+
+16.terraform plan
+purpose: Compare the configuration with the current known infrastructure/state and show the proposed
+actions.
+
+you commonly see symbols such as:
++ create
+- update in-place
+- destroy
+
+note: always inspect the plan before applying changes
+
+17.terrform apply
+Terraform displays a plan and request confirmation
+Type: yes (Terraform then creates the s3 bucket
+
+verify : aws s3 ls or also check from console
+
+18.terraform show
+shows the current state representation
+
+19.terraform state list
+terraform tracks the resource
+you should see somthing like : aws_s3_bucket.demo
+
+HANDS-ON 3 - Variables:
+Hard-coding everything become difficult
+instead of: 
+region = "us-east-1"
+we can use variables
+
+create : varibales.tf
+
+
+
+
 
 
 
